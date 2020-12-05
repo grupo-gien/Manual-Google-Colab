@@ -1,0 +1,47 @@
+
+--------------------------------------------------
+-----CONECTAR EL DRIVE PARA USAR LOS ARCHIVOS-----
+--------------------------------------------------
+
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+
+--------------------------------------------------
+-----EXTENSIÓN PARA EJECUTAR CODIGO R ------------
+--------------------------------------------------
+
+%load_ext rpy2.ipython
+
+--------------------------------------------------
+--------------EJEMPLO CON CODIGO R ---------------
+--------------------------------------------------
+
+%%R
+x <- 42
+print(x)
+
+--------------------------------------------------
+----------CARGA DE LIBRERIA ------ ---------------
+--------------------------------------------------
+
+%%R
+library(lattice)
+
+--------------------------------------------------
+---Leer y cargar en memoria e archivo Aves.csv --
+--------------------------------------------------
+
+%%R
+aves<-read.csv2('/content/drive/My Drive/RFiles/Aves.csv',row.names=1)
+
+--------------------------------------------------
+---Ejecución del código para generar Histograma --
+--------------------------------------------------
+
+%%R
+histogram(~Longitud.total, data=aves,nint= 7, 
+          xlab = "Longitud Total de Aves (mm)", ylab = "Frecuencias")
+
+
+
